@@ -1,1 +1,1 @@
-server.py and sparkMapReduce.py
+main.py and sparkMapReduce.py

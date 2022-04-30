@@ -1,10 +1,7 @@
 import findspark
-findspark.init()
-
 import pyspark
 import sys
-
-# Part II:  MapReduce basics: maps sentence lengths to the count of sentences with that length.
+findspark.init()
 
 if len(sys.argv) != 3:
 	raise Exception("Exactly 2 arguments are required: <inputUri> <outputUri>")
@@ -26,6 +23,7 @@ lines = sc.textFile(sys.argv[1])
 # Flatmap --> Apply a function to each element of the dataset, then flatten the result.
 sentence = lines.flatMap(lambda line: line.split("\n"))
 # wordCounts = words.map(myMapFunc).reduceByKey(myReduceFunc)
+# Part II:  MapReduce basics: maps sentence lengths to the count of sentences with that length.
 sentenceLengthCounts = sentence.map(myMapFunc).reduceByKey(myReduceFunc)
 
 
